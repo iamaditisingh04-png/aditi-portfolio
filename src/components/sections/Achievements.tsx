@@ -1,10 +1,11 @@
+
 import { timeline } from '../../data/portfolio'
 import { Reveal } from '../ui/Reveal'
 import { SectionHeading, SectionShell } from '../ui/SectionHeading'
 
 export function Achievements() {
   return (
-    <SectionShell id="achievements" tone="soft">
+    <SectionShell id="achievements" tone="plain">
       <Reveal>
         <SectionHeading
           eyebrow="Chapter IV · Achievements"
@@ -36,10 +37,14 @@ export function Achievements() {
             <span className="font-sans text-[0.55rem] uppercase tracking-[0.32em] text-terracotta/80">
               {item.year}
             </span>
+
             <h3 className="mt-2 font-display text-[1.22rem] font-normal leading-snug text-forest-deep">
               {item.title}
             </h3>
-            <p className="mt-1.5 text-[0.9rem] text-forest/50">{item.place}</p>
+
+            <p className="mt-1.5 text-[0.9rem] text-forest/50">
+              {item.place}
+            </p>
           </li>
         ))}
       </ol>

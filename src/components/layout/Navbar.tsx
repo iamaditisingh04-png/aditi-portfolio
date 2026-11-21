@@ -1,11 +1,13 @@
 import { useEffect, useLayoutEffect, useRef, useState } from 'react'
 import { navSections, type SectionId } from '../../data/portfolio'
+import { useWorldTheme } from '../../ThemeContext'
 import { cn } from '../../lib/cn'
 import { FlowerMark } from '../ui/Ornaments'
 
 export function Navbar() {
   const [active, setActive] = useState<SectionId>('home')
   const [open, setOpen] = useState(false)
+ const { theme, toggleTheme } = useWorldTheme()
   const [settled, setSettled] = useState(false)
   const [pill, setPill] = useState({ left: 0, width: 0, visible: false })
   const listRef = useRef<HTMLUListElement>(null)
@@ -135,7 +137,17 @@ export function Navbar() {
               )
             })}
           </ul>
-
+<button
+  type="button"
+  onClick={toggleTheme}
+  aria-label={`Switch to ${theme === 'day' ? 'night' : 'day'} mode`}
+  title={theme === 'day' ? 'Switch to night' : 'Switch to day'}
+  className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-forest/15 bg-white/50 text-forest transition-all duration-500 hover:scale-110 hover:bg-white/80"
+>
+  <span className="text-xl transition-transform duration-500 hover:rotate-45" key={theme}>
+    {theme === 'day' ? '☀️' : '🌙'}
+  </span>
+</button>
           <button
             type="button"
             onClick={() => setOpen(true)}
