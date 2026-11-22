@@ -2,8 +2,7 @@
 
 A personal portfolio built to feel like a little world of its own: a cozy, cottage-inspired environment with a scroll-driven 3D journey, playful details, and a collection of things I'm learning and building.
 
-**Live Site:** https://portfolio-murex-eight-mdchzqhs4k.vercel.app/
-
+**Live Site:**https://aditi-portfolio-tau-silk.vercel.app/
 ## ✨ Features
 
 - 3D cottage-inspired world with a scroll-driven camera journey

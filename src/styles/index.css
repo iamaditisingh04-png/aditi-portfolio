@@ -1,12 +1,18 @@
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 @layer base {
   :root {
-    --cream: #fff2d8;
-    --forest: #315c3b;
-    color-scheme: light;
+    --cream: #FFF8E8;
+    --forest: #E8DCC4;
+    --forest-deep: #17251E;
+    --background: #17251E;
+    --surface: #26382D;
+    --accent-lavender: #D8B8D8;
+    --accent-peach: #E9B58F;
+    color-scheme: light dark;
   }
 
   html {
@@ -20,7 +26,10 @@
   }
 
   body {
-    @apply bg-parchment font-sans text-forest antialiased;
+    background: #17251E;
+    color: #E8DCC4;
+    font-family: 'Outfit', system-ui, sans-serif;
+    @apply antialiased;
     overflow-x: hidden;
   }
 
@@ -28,9 +37,23 @@
     scroll-margin-top: 5rem;
   }
 
+  h1, h2, h3, h4, h5, h6 {
+    color: #FFF8E8;
+  }
+
+
+  a {
+    color: #E9B58F;
+    transition: color 0.3s ease;
+  }
+
+  a:hover {
+    color: #D8B8D8;
+  }
+
   ::selection {
-    background-color: rgba(245, 205, 104, 0.55);
-    color: #22422c;
+    background-color: rgba(216, 184, 216, 0.45);
+    color: #17251E;
   }
 
   ::-webkit-scrollbar {
@@ -38,13 +61,13 @@
   }
 
   ::-webkit-scrollbar-track {
-    background: #fff8e8;
+    background: #17251E;
   }
 
   ::-webkit-scrollbar-thumb {
-    background: linear-gradient(#78a85b, #42bdb0);
+    background: linear-gradient(#829B75, #B99BC5);
     border-radius: 999px;
-    border: 3px solid #fff8e8;
+    border: 3px solid #17251E;
   }
 }
 
@@ -59,9 +82,9 @@
     border-radius: 999px;
     padding: 0.95rem 1.85rem;
     font-family: 'Outfit', system-ui, sans-serif;
-    font-size: 0.65rem;
-    font-weight: 500;
-    letter-spacing: 0.24em;
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.18em;
     text-transform: uppercase;
     transition:
       transform 0.6s cubic-bezier(0.16, 1, 0.3, 1),
@@ -80,7 +103,7 @@
   .btn-bloom__arrow {
     height: 0.72rem;
     width: 0.72rem;
-    opacity: 0.75;
+    opacity: 0.85;
     transition:
       transform 0.5s cubic-bezier(0.16, 1, 0.3, 1),
       opacity 0.4s ease;
@@ -110,87 +133,103 @@
   }
 
   .btn-bloom:focus-visible {
-    outline: 2px solid rgba(245, 205, 104, 0.9);
+    outline: 2px solid #E9B58F;
     outline-offset: 3px;
   }
 
   .btn-bloom--light {
-    background: #fff2d8;
-    color: #22422c;
-    box-shadow: 0 18px 40px -22px rgba(6, 30, 18, 0.9);
+    background: #FFF8E8;
+    color: #17251E;
+    box-shadow: 0 18px 40px -22px rgba(0, 0, 0, 0.7);
   }
 
   .btn-bloom--light::before {
-    background: linear-gradient(115deg, #315c3b, #3f804f 55%, #42bdb0);
+    background: linear-gradient(115deg, #829B75, #B99BC5);
   }
 
   .btn-bloom--light:hover {
-    color: #fff8e8;
-    box-shadow: 0 26px 55px -24px rgba(6, 30, 18, 0.95);
+    color: #17251E;
+    box-shadow: 0 26px 55px -24px rgba(0, 0, 0, 0.8);
   }
 
   .btn-bloom--ghost {
-    color: #fff2d8;
-    border: 1px solid rgba(255, 242, 216, 0.58);
-    background: rgba(11, 34, 22, 0.4);
+    color: #FFF8E8;
+    border: 1px solid rgba(255, 248, 232, 0.55);
+    background: rgba(23, 37, 30, 0.75);
     backdrop-filter: blur(10px);
   }
 
   .btn-bloom--ghost::before {
-    background: linear-gradient(115deg, #fff2d8, #fdf7e7);
+    background: #FFF8E8;
   }
 
   .btn-bloom--ghost:hover {
-    color: #22422c;
-    border-color: rgba(255, 242, 216, 0.95);
+    color: #17251E;
+    border-color: #FFF8E8;
   }
 
   .btn-bloom--solid {
-    background: #315c3b;
-    color: #fff8e8;
-    box-shadow: 0 18px 40px -24px rgba(24, 54, 36, 0.9);
+    background: #829B75;
+    color: #17251E;
+    box-shadow: 0 18px 40px -24px rgba(0, 0, 0, 0.7);
   }
 
   .btn-bloom--solid::before {
-    background: linear-gradient(115deg, #3f7f52, #42bdb0);
+    background: linear-gradient(115deg, #B99BC5, #E9B58F);
+  }
+
+  .btn-bloom--solid:hover {
+    color: #17251E;
   }
 
   .btn-bloom--outline {
-    border: 1px solid rgba(49, 92, 59, 0.28);
-    color: #315c3b;
-    background: rgba(255, 248, 232, 0.45);
+    border: 1px solid rgba(232, 220, 196, 0.5);
+    color: #FFF8E8;
+    background: rgba(38, 56, 45, 0.7);
   }
 
   .btn-bloom--outline::before {
-    background: linear-gradient(115deg, #315c3b, #35593f);
+    background: linear-gradient(115deg, #829B75, #B99BC5);
   }
 
   .btn-bloom--outline:hover {
-    color: #fff8e8;
-    border-color: rgba(49, 92, 59, 0.55);
+    color: #17251E;
+    border-color: #B99BC5;
   }
 
   .paper {
-    background-color: #fff8e8;
+    background-color: #17251E;
     background-image:
-      radial-gradient(900px 480px at 12% 0%, rgba(181, 207, 120, 0.22), transparent 65%),
-      radial-gradient(760px 420px at 92% 14%, rgba(66, 189, 176, 0.16), transparent 68%),
-      radial-gradient(640px 520px at 50% 108%, rgba(233, 165, 174, 0.18), transparent 70%);
+      radial-gradient(900px 480px at 12% 0%, rgba(130, 155, 117, 0.16), transparent 65%),
+      radial-gradient(760px 420px at 92% 14%, rgba(185, 155, 197, 0.12), transparent 68%),
+      radial-gradient(640px 520px at 50% 108%, rgba(233, 181, 143, 0.1), transparent 70%);
   }
 
   .paper-soft {
-    background-color: #fff8e8;
+    background-color: #1D2D24;
     background-image:
-      radial-gradient(820px 420px at 85% 0%, rgba(105, 182, 232, 0.14), transparent 65%),
-      radial-gradient(720px 500px at 0% 90%, rgba(245, 205, 104, 0.2), transparent 70%);
+      radial-gradient(820px 420px at 85% 0%, rgba(185, 155, 197, 0.12), transparent 65%),
+      radial-gradient(720px 500px at 0% 90%, rgba(233, 181, 143, 0.1), transparent 70%);
   }
 
   .eyebrow {
-    @apply flex items-center gap-3 font-sans text-[0.68rem] font-medium uppercase tracking-[0.42em] text-forest/60;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    font-family: 'Outfit', system-ui, sans-serif;
+    font-size: 0.7rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.3em;
+    color: #D8B8D8;
   }
 
   .display-title {
-    @apply font-display font-light leading-[1.02] tracking-[-0.015em] text-forest-deep;
+    font-family: inherit;
+    font-weight: 400;
+    line-height: 1.02;
+    letter-spacing: -0.015em;
+    color: #FFF8E8;
   }
 }
 
