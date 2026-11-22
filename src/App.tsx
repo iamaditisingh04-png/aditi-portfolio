@@ -17,23 +17,39 @@ import { ScrollJourney } from './components/scene/ScrollJourney'
 import { JourneyProgressContext } from './components/scene/journeyProgress'
 
 import { CursorFrog } from './components/ui/CursorFrog'
+import { FrogHop } from './components/ui/FrogHop'
 
 export default function App() {
   const [progress, setProgress] = useState(0)
 
+  const path = window.location.pathname.replace(/\/+$/, '') || '/'
+
+  const portfolioPaths = [
+    '/',
+    '/index.html',
+    '/about',
+    '/skills',
+    '/projects',
+    '/achievements',
+    '/coding',
+    '/contact',
+  ]
+
+  const isPortfolio = portfolioPaths.includes(path)
+
+  if (!isPortfolio) {
+    return <FrogHop />
+  }
+
   return (
     <JourneyProgressContext.Provider value={{ progress, setProgress }}>
       <div className="relative min-h-screen overflow-clip bg-transparent">
-
-        {/* Continuous 3D cottage world */}
         <div className="pointer-events-none fixed inset-0 z-0">
           <CreekWorld />
         </div>
 
-        {/* Scroll-controlled camera journey */}
         <ScrollJourney />
 
-        {/* Portfolio content */}
         <div className="relative z-10">
           <Navbar />
 
@@ -50,9 +66,7 @@ export default function App() {
           <Footer />
         </div>
 
-        {/* Little frog with a cursor-chasing tongue 🐸 */}
         <CursorFrog />
-
       </div>
     </JourneyProgressContext.Provider>
   )
