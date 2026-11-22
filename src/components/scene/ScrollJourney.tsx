@@ -1,5 +1,5 @@
 
-import { useCallback, useEffect } from 'react'
+import { useEffect } from 'react'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { useJourneyProgress } from './journeyProgress'
@@ -9,33 +9,31 @@ gsap.registerPlugin(ScrollTrigger)
 export function ScrollJourney() {
   const { setProgress } = useJourneyProgress()
 
-  const updateProgress = useCallback(
-    (progress: number) => {
-      setProgress(progress)
-    },
-    [setProgress],
-  )
-
   useEffect(() => {
     const trigger = ScrollTrigger.create({
-      trigger: '#about',
+      trigger: '#home',
       endTrigger: '#contact',
       start: 'top top',
       end: 'bottom bottom',
       scrub: 1,
       invalidateOnRefresh: true,
+
       onUpdate: (self) => {
-        updateProgress(self.progress)
+        setProgress(self.progress)
+      },
+
+      onRefresh: (self) => {
+        setProgress(self.progress)
       },
     })
 
     ScrollTrigger.refresh()
+    setProgress(trigger.progress)
 
     return () => {
       trigger.kill()
     }
-  }, [updateProgress])
+  }, [setProgress])
 
   return null
 }
-

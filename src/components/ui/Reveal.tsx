@@ -1,3 +1,4 @@
+
 import { useEffect, useRef, useState, type ReactNode } from 'react'
 import { cn } from '../../lib/cn'
 
@@ -15,6 +16,12 @@ export function Reveal({ children, delay = 0, className }: RevealProps) {
   useEffect(() => {
     const element = ref.current
     if (!element) return
+
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      setVisible(true)
+      return
+    }
+
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
@@ -24,6 +31,7 @@ export function Reveal({ children, delay = 0, className }: RevealProps) {
       },
       { threshold: 0.15, rootMargin: '0px 0px -6% 0px' },
     )
+
     observer.observe(element)
     return () => observer.disconnect()
   }, [])
@@ -33,7 +41,7 @@ export function Reveal({ children, delay = 0, className }: RevealProps) {
       ref={ref}
       style={{ transitionDelay: `${delay}ms` }}
       className={cn(
-        'transition-[opacity,transform] duration-[900ms] ease-[cubic-bezier(.16,1,.3,1)] will-change-transform',
+        'transition-[opacity,transform] duration-[900ms] ease-[cubic-bezier(.16,1,.3,1)]',
         visible ? 'translate-y-0 opacity-100' : 'translate-y-6 opacity-0',
         className,
       )}

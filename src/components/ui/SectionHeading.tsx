@@ -26,7 +26,12 @@ export function SectionHeading({
         className,
       )}
     >
-      <span className={cn('eyebrow', align === 'center' && 'justify-center')}>
+      <span
+        className={cn(
+          'eyebrow',
+          align === 'center' && 'justify-center',
+        )}
+      >
         {eyebrow}
       </span>
 
@@ -39,7 +44,7 @@ export function SectionHeading({
       />
 
       {lead && (
-        <p className="mt-6 max-w-xl text-[1.02rem] leading-relaxed text-forest/70">
+        <p className="mt-6 max-w-xl text-[1.02rem] leading-relaxed text-[#C2D0B8]">
           {lead}
         </p>
       )}

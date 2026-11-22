@@ -1,4 +1,6 @@
 
+import { Text } from '@react-three/drei'
+
 function WorkshopDesk({ isNight }: { isNight: boolean }) {
   const glow = isNight ? 1.2 : 0.25
 
@@ -104,30 +106,117 @@ function ProjectDisplay({ isNight }: { isNight: boolean }) {
         />
       </mesh>
 
-      {/* Little pinned project cards */}
-      {[
-        [-0.82, 0.24, '#e7b6a0'],
-        [0, 0.24, '#d7dfa9'],
-        [0.82, 0.24, '#a9c8c0'],
-        [-0.42, -0.3, '#e9d7b4'],
-        [0.55, -0.3, '#d4b5ce'],
-      ].map(([x, y, color], i) => (
-        <group
-          key={i}
-          position={[x as number, y as number, 0.105]}
-          rotation={[0, 0, (i % 2 === 0 ? -1 : 1) * 0.06]}
-        >
-          <mesh>
-            <boxGeometry args={[0.48, 0.38, 0.025]} />
-            <meshStandardMaterial color={color as string} />
-          </mesh>
+      {/* Sticky note 1 */}
+      <group position={[-0.66, 0.05, 0.105]} rotation={[0, 0, -0.045]}>
+        <mesh castShadow>
+          <boxGeometry args={[1.12, 0.68, 0.035]} />
+          <meshStandardMaterial
+            color="#ead9a9"
+            roughness={0.95}
+            emissive="#ead9a9"
+            emissiveIntensity={isNight ? 0.12 : 0}
+          />
+        </mesh>
 
-          <mesh position={[0, 0.13, 0.025]}>
-            <sphereGeometry args={[0.035, 10, 10]} />
-            <meshStandardMaterial color="#b75f50" />
-          </mesh>
-        </group>
-      ))}
+        {/* Pin */}
+        <mesh position={[0, 0.28, 0.035]}>
+          <sphereGeometry args={[0.045, 12, 12]} />
+          <meshStandardMaterial color="#bd705d" metalness={0.25} />
+        </mesh>
+
+        <Text
+          position={[0, 0.13, 0.021]}
+          fontSize={0.075}
+          color="#82613d"
+          anchorX="center"
+          anchorY="middle"
+          letterSpacing={0.08}
+        >
+          CURRENT STATUS
+        </Text>
+
+        <Text
+          position={[0, -0.045, 0.021]}
+          fontSize={0.105}
+          maxWidth={0.98}
+          textAlign="center"
+          lineHeight={1.3}
+          color="#493b2d"
+          anchorX="center"
+          anchorY="middle"
+        >
+          Currently buffering...
+          {'\n'}
+          please wait.
+        </Text>
+
+        <Text
+          position={[0, -0.245, 0.021]}
+          fontSize={0.055}
+          color="#82613d"
+          anchorX="center"
+          anchorY="middle"
+        >
+          brain.exe is unavailable
+        </Text>
+      </group>
+
+      {/* Sticky note 2 */}
+      <group position={[0.66, 0.05, 0.105]} rotation={[0, 0, 0.045]}>
+        <mesh castShadow>
+          <boxGeometry args={[1.12, 0.68, 0.035]} />
+          <meshStandardMaterial
+            color="#e8c9c1"
+            roughness={0.95}
+            emissive="#e8c9c1"
+            emissiveIntensity={isNight ? 0.12 : 0}
+          />
+        </mesh>
+
+        {/* Pin */}
+        <mesh position={[0, 0.28, 0.035]}>
+          <sphereGeometry args={[0.045, 12, 12]} />
+          <meshStandardMaterial color="#d19a58" metalness={0.25} />
+        </mesh>
+
+        <Text
+          position={[0, 0.13, 0.021]}
+          fontSize={0.075}
+          color="#93645d"
+          anchorX="center"
+          anchorY="middle"
+          letterSpacing={0.06}
+        >
+          GOLDEN RULE
+        </Text>
+
+        <Text
+          position={[0, -0.035, 0.021]}
+          fontSize={0.095}
+          maxWidth={0.99}
+          textAlign="center"
+          lineHeight={1.3}
+          color="#513a35"
+          anchorX="center"
+          anchorY="middle"
+        >
+          If it works,
+          {'\n'}
+          don't ask too many
+          {'\n'}
+          questions.
+        </Text>
+
+        <Text
+          position={[0, -0.245, 0.021]}
+          fontSize={0.052}
+          color="#93645d"
+          anchorX="center"
+          anchorY="middle"
+        >
+          A survival strategy.
+        </Text>
+      </group>
     </group>
   )
 }

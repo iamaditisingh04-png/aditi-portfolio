@@ -6,10 +6,10 @@ import { Reveal } from '../ui/Reveal'
 import { SectionShell } from '../ui/SectionHeading'
 
 const facts = [
-  { label: 'Degree', value: profile.degree },
-  { label: 'Branch', value: profile.branch },
-  { label: 'College', value: profile.college },
-  { label: 'Graduation', value: profile.graduation },
+  { label: 'Currently studying', value: profile.degree },
+  { label: 'The subject', value: profile.branch },
+  { label: 'Where you can find me', value: profile.college },
+  { label: 'The big year', value: profile.graduation },
 ]
 
 export function About() {
@@ -46,11 +46,11 @@ export function About() {
         {/* Room introduction */}
         <Reveal className="mb-16 text-center">
           <span className={`font-sans text-[0.6rem] uppercase tracking-[0.4em] ${colors.muted}`}>
-            Welcome, traveller
+            Oh, you're here!
           </span>
 
           <h2 className={`mt-5 font-display text-[clamp(2.8rem,6vw,5rem)] leading-tight ${colors.heading}`}>
-            A Little About Me
+            The Human Behind the Screen
           </h2>
 
           <div className="mt-5 flex items-center justify-center gap-3">
@@ -60,7 +60,7 @@ export function About() {
           </div>
 
           <p className={`mt-5 font-display text-lg italic ${colors.body}`}>
-            Every little idea has a place to grow.
+            A little introvert, a little chaos, and a lot of curiosity.
           </p>
         </Reveal>
 
@@ -74,16 +74,16 @@ export function About() {
             <div className="flex items-center gap-3">
               <span className="h-px w-8 bg-sun/80" />
               <span className={`font-sans text-[0.58rem] uppercase tracking-[0.35em] ${colors.muted}`}>
-                A letter from the cottage
+                A slightly unfiltered introduction
               </span>
             </div>
 
             <h3 className={`mt-7 font-display text-3xl sm:text-4xl ${colors.heading}`}>
-              Hello, I'm Aditi.
+              Hey, I'm Aditi!
             </h3>
 
             <p className={`mt-3 font-display text-xl italic ${colors.body}`}>
-              A curious mind with a builder's heart.
+              Part daydreamer. Part problem-solver. Full-time work in progress.
             </p>
 
             <div className={`mt-8 space-y-5 border-l-2 border-sun/70 pl-5 text-[0.98rem] leading-[1.9] ${colors.body}`}>
@@ -92,11 +92,19 @@ export function About() {
                   {paragraph}
                 </p>
               ))}
+
+              <p>
+                Outside the coding universe, I can happily disappear into an
+                anime, a playlist, a space documentary or a completely
+                unrelated internet rabbit hole. I have a soft spot for
+                science, music and things that make me wonder how the
+                universe even works.
+              </p>
             </div>
 
             <blockquote className={`mt-9 border-t pt-7 ${colors.divider}`}>
               <p className={`font-display text-xl italic leading-relaxed ${colors.heading}`}>
-                "I like the moment an idea stops being imaginary and starts working."
+                "CHILL or CHULL sath me."
               </p>
             </blockquote>
 
@@ -112,7 +120,7 @@ export function About() {
             </div>
 
             <p className={`mt-9 text-right font-display text-lg italic ${colors.body}`}>
-              — Aditi
+              — Aditi, probably overthinking something
             </p>
           </article>
         </Reveal>
@@ -124,15 +132,19 @@ export function About() {
               <div className="flex items-center justify-between gap-4">
                 <div>
                   <span className={`font-sans text-[0.58rem] uppercase tracking-[0.35em] ${colors.muted}`}>
-                    Pinned to my noticeboard
+                    Officially, at least
                   </span>
 
                   <h3 className={`mt-3 font-display text-2xl sm:text-3xl ${colors.heading}`}>
-                    My Academic Journey
+                    The Academic Stuff
                   </h3>
+
+                  <p className={`mt-2 font-display text-base italic ${colors.body}`}>
+                    Yes, I do attend college, for attendance.
+                  </p>
                 </div>
 
-                <FlowerMark className="h-8 w-8 text-terracotta/80" />
+                <FlowerMark className="h-8 w-8 shrink-0 text-terracotta/80" />
               </div>
 
               <dl className={`mt-8 grid grid-cols-1 gap-7 border-t pt-8 sm:grid-cols-2 ${colors.divider}`}>
@@ -160,11 +172,11 @@ export function About() {
             <div className="absolute -top-3 left-8 right-8 h-3 rounded-full bg-[#a77b51] shadow-md" />
 
             <span className={`font-sans text-[0.58rem] uppercase tracking-[0.35em] ${colors.muted}`}>
-              A few things on my curiosity shelf
+              Things that occupy my brain
             </span>
 
             <h3 className={`mt-3 font-display text-2xl ${colors.heading}`}>
-              Things I love exploring
+              My Current Obsessions
             </h3>
 
             <div className="mt-7 flex flex-wrap gap-x-7 gap-y-5">
@@ -187,14 +199,14 @@ export function About() {
             <LeafSprig className="h-10 w-10 rotate-90 text-leaf/70" />
 
             <p className={`mt-5 font-display text-xl italic ${colors.body}`}>
-              There's much more to discover inside...
+              Anyway, enough about me. Let's see what else is growing here.
             </p>
 
             <a
               href="#skills"
               className="mt-6 inline-flex items-center gap-3 rounded-full border border-sun/50 px-6 py-3 font-sans text-[0.6rem] uppercase tracking-[0.25em] text-sun transition-all duration-300 hover:bg-sun/10"
             >
-              Visit the little library
+              Enter the little library
               <span aria-hidden="true">→</span>
             </a>
 
@@ -203,7 +215,6 @@ export function About() {
             </span>
           </div>
         </Reveal>
-
       </div>
     </SectionShell>
   )

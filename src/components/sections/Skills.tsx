@@ -53,10 +53,10 @@ export function Skills() {
 
         <div className="mt-5">
           <SectionHeading
-            eyebrow="A collection of things I'm learning"
+            eyebrow="Things I've poked around with"
             title="The Little Library"
             align="center"
-            lead="Every book holds a new possibility. These are the skills I'm exploring, practising and slowly making my own."
+            lead="Some things I've learned, some I'm still figuring out, and some that are currently winning against me."
           />
         </div>
       </Reveal>
@@ -70,10 +70,10 @@ export function Skills() {
 
           <div>
             <p className={`font-display text-xl ${colors.heading}`}>
-              A work in progress
+              No expert claims here.
             </p>
             <p className={`mt-1 text-sm leading-relaxed ${colors.body}`}>
-              This library grows with every experiment, project and new thing I learn.
+              Just curiosity, practice, experiments and the occasional existential crisis over semicolons.
             </p>
           </div>
         </div>
@@ -85,13 +85,11 @@ export function Skills() {
           {learningPaths.map((path, index) => (
             <Reveal key={path.title} delay={index * 80}>
               <article className="group relative h-full">
-                {/* Book */}
                 <div className="relative flex h-full min-h-[285px] flex-col overflow-hidden rounded-t-xl rounded-b-md border border-[#8d704e]/30 bg-[#fff7e8]/90 shadow-[0_12px_30px_rgba(49,57,35,0.13)] backdrop-blur-md transition-all duration-500 group-hover:-translate-y-2 group-hover:shadow-[0_20px_40px_rgba(49,57,35,0.2)]">
 
                   {/* Book spine */}
                   <div className={`absolute inset-y-0 left-0 w-3 bg-gradient-to-r ${bookColors[index % bookColors.length]}`} />
 
-                  {/* Book cover details */}
                   <div className="flex flex-1 flex-col p-7 pl-9">
                     <div className="flex items-center justify-between">
                       <span className="font-sans text-[0.58rem] uppercase tracking-[0.25em] text-[#8c795c]">
@@ -101,7 +99,7 @@ export function Skills() {
                       <FlowerMark className="h-5 w-5 text-[#d5ad62] transition-transform duration-500 group-hover:rotate-45" />
                     </div>
 
-                    {/* Decorative book illustration */}
+                    {/* Book illustration */}
                     <div className="my-7 flex justify-center">
                       <div className={`flex h-20 w-20 items-center justify-center rounded-full bg-gradient-to-br ${bookColors[index % bookColors.length]} shadow-inner`}>
                         <span className="font-display text-3xl text-[#fff0d4]">
@@ -120,7 +118,7 @@ export function Skills() {
 
                     <div className="mt-6 flex items-center justify-between border-t border-[#d9c7a5]/70 pt-4">
                       <span className="font-sans text-[0.53rem] uppercase tracking-[0.22em] text-[#8a8066]">
-                        Learning journal
+                        Still learning
                       </span>
 
                       <span className="h-2 w-2 rounded-full bg-[#91a477]" />
@@ -128,7 +126,7 @@ export function Skills() {
                   </div>
                 </div>
 
-                {/* Wooden shelf beneath each book */}
+                {/* Wooden shelf */}
                 <div className={`relative -mt-1 h-3 rounded-sm ${colors.shelf} shadow-[0_5px_8px_rgba(35,30,20,0.2)]`}>
                   <div className={`absolute inset-x-0 bottom-0 h-1 ${colors.shelfEdge}`} />
                 </div>
@@ -138,13 +136,30 @@ export function Skills() {
         </div>
       </div>
 
-      {/* Closing note */}
+      {/* Personal note */}
       <Reveal delay={180}>
+        <div className={`mx-auto mt-16 max-w-2xl rounded-xl border p-7 text-center shadow-lg sm:p-9 ${colors.panel}`}>
+          <span className={`font-sans text-[0.55rem] uppercase tracking-[0.35em] ${colors.muted}`}>
+            A note I've left for myself
+          </span>
+
+          <p className={`mt-5 font-display text-xl italic leading-relaxed sm:text-2xl ${colors.heading}`}>
+            "You don't have to know everything. Just stay curious enough to keep learning."
+          </p>
+
+          <p className={`mt-4 font-display text-sm italic ${colors.muted}`}>
+            — A reminder for the next debugging disaster
+          </p>
+        </div>
+      </Reveal>
+
+      {/* Closing note */}
+      <Reveal delay={220}>
         <div className="mt-20 flex flex-col items-center text-center">
           <FlowerMark className="h-7 w-7 text-sun" />
 
           <p className={`mt-5 max-w-xl font-display text-xl italic leading-relaxed ${colors.body}`}>
-            "There will always be another book to open, another skill to discover."
+            "One day I'll look back at these little beginnings and smile."
           </p>
 
           <span className={`mt-5 font-sans text-[0.55rem] uppercase tracking-[0.38em] ${colors.muted}`}>
