@@ -1,5 +1,7 @@
+
 import { useEffect, useState, type ReactNode } from 'react'
 import { contact } from '../../data/portfolio'
+import { useWorldTheme } from '../../ThemeContext'
 import { cn } from '../../lib/cn'
 import { ButtonLink } from '../ui/Button'
 import {
@@ -23,10 +25,12 @@ function SocialLink({
   href,
   label,
   children,
+  isDay,
 }: {
   href: string
   label: string
   children: ReactNode
+  isDay: boolean
 }) {
   return (
     <a
@@ -35,7 +39,10 @@ function SocialLink({
       rel="noopener noreferrer"
       aria-label={`${label} profile (opens in a new tab)`}
       className={cn(
-        'group inline-flex items-center gap-2.5 rounded-full border border-forest/15 bg-white/45 px-5 py-3 text-forest transition-colors duration-300 hover:border-forest/30 hover:bg-white/75',
+        'group inline-flex items-center gap-2.5 rounded-full border px-5 py-3 transition-colors duration-300',
+        isDay
+          ? 'border-forest/15 bg-[#f3ead7]/70 text-forest hover:border-forest/30 hover:bg-[#f3ead7]'
+          : 'border-white/15 bg-[#26382d]/70 text-[#f3ead7] hover:border-[#d8b8d8]/50 hover:bg-[#26382d]',
         focusRing,
       )}
     >
@@ -49,7 +56,23 @@ function SocialLink({
 }
 
 export function Contact() {
+  const { theme } = useWorldTheme()
+  const isDay = theme === 'day'
   const [copied, setCopied] = useState(false)
+
+  const colors = {
+    heading: isDay ? 'text-[#26382d]' : 'text-[#f3ead7]',
+    body: isDay ? 'text-[#435744]/80' : 'text-[#c2d0b8]',
+    label: isDay ? 'text-[#a66e50]' : 'text-[#e9b58f]',
+    muted: isDay ? 'text-[#435744]/55' : 'text-[#c2d0b8]/60',
+    line: isDay ? 'bg-forest/15' : 'bg-white/15',
+    icon: isDay ? 'text-[#a66e50]' : 'text-[#e9b58f]',
+    decoration: isDay ? 'text-leaf/20' : 'text-[#c2d0b8]/15',
+    glow: isDay
+      ? 'bg-[radial-gradient(60%_70%_at_50%_30%,rgba(233,181,143,0.25),transparent_65%)]'
+      : 'bg-[radial-gradient(60%_70%_at_50%_30%,rgba(216,184,216,0.12),transparent_65%)]',
+    email: isDay ? 'text-[#435744]/65' : 'text-[#c2d0b8]/70',
+  }
 
   useEffect(() => {
     if (!copied) return
@@ -61,7 +84,6 @@ export function Contact() {
     try {
       await navigator.clipboard.writeText(contact.email)
     } catch {
-      // Older or locked-down browsers: fall back to a hidden selection.
       const field = document.createElement('textarea')
       field.value = contact.email
       field.setAttribute('readonly', '')
@@ -77,31 +99,47 @@ export function Contact() {
 
   return (
     <SectionShell id="contact" className="pb-24 pt-24 md:pt-32">
-      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(60%_70%_at_50%_30%,rgba(245,205,104,0.3),transparent_65%)]" />
-      <LeafSprig className="pointer-events-none absolute -left-10 bottom-0 hidden rotate-[172deg] text-leaf/20 md:block" />
-      <LeafSprig className="pointer-events-none absolute -right-6 top-16 hidden rotate-[14deg] text-blush/30 md:block" />
+      <div className={cn('pointer-events-none absolute inset-0', colors.glow)} />
+
+      <LeafSprig
+        className={cn(
+          'pointer-events-none absolute -left-10 bottom-0 hidden rotate-[172deg] md:block',
+          colors.decoration,
+        )}
+      />
+      <LeafSprig
+        className={cn(
+          'pointer-events-none absolute -right-6 top-16 hidden rotate-[14deg] md:block',
+          colors.decoration,
+        )}
+      />
 
       <div className="relative mx-auto max-w-2xl text-center">
         <Reveal>
           <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-full border border-sun/40 bg-sun/10">
-            <FlowerMark className="h-6 w-6 text-terracotta" />
+            <FlowerMark className={`h-6 w-6 ${colors.icon}`} />
           </div>
-          <span className="eyebrow mt-7 justify-center">Chapter V · Contact</span>
+
+          <span className={`mt-7 block font-sans text-[0.55rem] uppercase tracking-[0.34em] ${colors.label}`}>
+            Chapter V · The Little Mailbox
+          </span>
         </Reveal>
 
         <Reveal delay={90}>
-          <h2 className="display-title mt-5 text-[clamp(2.1rem,5vw,3.9rem)]">
-            Let’s grow
+          <h2 className={`mt-5 font-display text-[clamp(2.1rem,5vw,3.9rem)] leading-tight ${colors.heading}`}>
+            Got an idea?
             <br />
-            something together.
+            Let's make a little chaos.
           </h2>
         </Reveal>
 
         <Reveal delay={150}>
           <BotanicalRule className="mx-auto mt-7" />
-          <p className="mx-auto mt-7 max-w-lg text-[1.02rem] leading-[1.9] text-forest/70">
-            I’d love to hear from you — a project idea, a question, or simply a hello. Write to
-            me, or find me in the gardens over on GitHub and LinkedIn.
+
+          <p className={`mx-auto mt-7 max-w-lg text-[1.02rem] leading-[1.9] ${colors.body}`}>
+            Have something interesting in mind? Want to build something
+            weird, cool, or preferably both? Maybe you just want to say hi.
+            My inbox is open. I promise I'm friendlier than my debugging sessions.
           </p>
         </Reveal>
 
@@ -112,16 +150,17 @@ export function Contact() {
               aria-label={`Email Aditi Singh at ${contact.email}`}
               className={cn('btn-bloom btn-bloom--solid w-full sm:w-auto', focusRing)}
             >
-              <span>Email me</span>
+              <span>Send me a little letter</span>
               <MailIcon className="btn-bloom__arrow" />
             </a>
+
             <button
               type="button"
               onClick={copyEmail}
               aria-label={copied ? 'Email address copied' : `Copy email address ${contact.email}`}
               className={cn('btn-bloom btn-bloom--outline w-full sm:w-auto', focusRing)}
             >
-              <span>{copied ? 'Copied' : 'Copy email'}</span>
+              <span>{copied ? 'Copied!' : 'Steal my email'}</span>
               {copied ? (
                 <CheckIcon className="btn-bloom__arrow" />
               ) : (
@@ -130,31 +169,54 @@ export function Contact() {
             </button>
           </div>
 
-          <p className="mt-5 font-sans text-[0.68rem] tracking-[0.16em] text-forest/55">
+          <p className={`mt-5 font-sans text-[0.68rem] tracking-[0.16em] ${colors.email}`}>
             {contact.email}
           </p>
+
           <span role="status" aria-live="polite" className="sr-only">
             {copied ? 'Email address copied to clipboard' : ''}
           </span>
         </Reveal>
 
         <Reveal delay={250}>
-          <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
-            <SocialLink href={contact.github.url} label={contact.github.label}>
+          <p className={`mb-5 mt-10 font-sans text-[0.52rem] uppercase tracking-[0.32em] ${colors.label}`}>
+            Find me elsewhere on the internet
+          </p>
+
+          <div className="flex flex-wrap items-center justify-center gap-3">
+            <SocialLink
+              href={contact.github.url}
+              label={contact.github.label}
+              isDay={isDay}
+            >
               <GitHubIcon className="h-4 w-4" />
             </SocialLink>
-            <SocialLink href={contact.linkedin.url} label={contact.linkedin.label}>
+
+            <SocialLink
+              href={contact.linkedin.url}
+              label={contact.linkedin.label}
+              isDay={isDay}
+            >
               <LinkedInIcon className="h-4 w-4" />
             </SocialLink>
+
             {contact.resume.url ? (
-              <SocialLink href={contact.resume.url} label={contact.resume.label}>
+              <SocialLink
+                href={contact.resume.url}
+                label={contact.resume.label}
+                isDay={isDay}
+              >
                 <MailIcon className="h-4 w-4" />
               </SocialLink>
             ) : (
               <span
                 aria-disabled="true"
                 title="The résumé PDF will be added here soon"
-                className="inline-flex cursor-not-allowed items-center gap-2.5 rounded-full border border-dashed border-forest/20 px-5 py-3 text-forest/40"
+                className={`inline-flex cursor-not-allowed items-center gap-2.5 rounded-full border border-dashed px-5 py-3 ${
+                  isDay
+                    ? 'border-forest/20 text-forest/40'
+                    : 'border-white/20 text-white/40'
+                }`}
               >
                 <MailIcon className="h-4 w-4" />
                 <span className="font-sans text-[0.6rem] font-medium uppercase tracking-[0.24em]">
@@ -168,21 +230,22 @@ export function Contact() {
         <Reveal delay={310}>
           <div className="mt-12 flex flex-col items-center justify-center gap-3 sm:flex-row sm:gap-4">
             <ButtonLink href="#home" variant="outline" className="w-full sm:w-auto">
-              Wander back to the creek
+              Back to the beginning
             </ButtonLink>
+
             <ButtonLink href="#about" variant="outline" className="w-full sm:w-auto">
-              Read my story
+              Meet the human
             </ButtonLink>
           </div>
         </Reveal>
 
         <Reveal delay={360}>
           <div className="mt-14 flex items-center justify-center gap-4">
-            <span className="h-px w-14 bg-forest/15" />
-            <p className="font-sans text-[0.5rem] uppercase tracking-[0.34em] text-forest/35">
-              Mysore · India
+            <span className={`h-px w-14 ${colors.line}`} />
+            <p className={`font-sans text-[0.5rem] uppercase tracking-[0.34em] ${colors.muted}`}>
+              Mysore · India · Somewhere in the clouds
             </p>
-            <span className="h-px w-14 bg-forest/15" />
+            <span className={`h-px w-14 ${colors.line}`} />
           </div>
         </Reveal>
       </div>

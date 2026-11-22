@@ -1,3 +1,4 @@
+
 import type { ReactNode } from 'react'
 import { cn } from '../../lib/cn'
 import { BotanicalRule } from './Ornaments'
@@ -25,11 +26,27 @@ export function SectionHeading({
         className,
       )}
     >
-      <span className={cn('eyebrow', align === 'center' && 'justify-center')}>{eyebrow}</span>
-      <h2 className="display-title mt-5 text-[clamp(2rem,4.4vw,3.6rem)]">{title}</h2>
-      <BotanicalRule className={cn('mt-6', align === 'center' ? 'mx-auto' : '')} />
+      <span
+        className={cn(
+          'eyebrow',
+          align === 'center' && 'justify-center',
+        )}
+      >
+        {eyebrow}
+      </span>
+
+      <h2 className="display-title mt-5 text-[clamp(2rem,4.4vw,3.6rem)]">
+        {title}
+      </h2>
+
+      <BotanicalRule
+        className={cn('mt-6', align === 'center' ? 'mx-auto' : '')}
+      />
+
       {lead && (
-        <p className="mt-6 max-w-xl text-[1.02rem] leading-relaxed text-forest/70">{lead}</p>
+        <p className="mt-6 max-w-xl text-[1.02rem] leading-relaxed text-[#C2D0B8]">
+          {lead}
+        </p>
       )}
     </div>
   )
@@ -39,7 +56,7 @@ export function SectionShell({
   id,
   children,
   className,
-  tone = 'paper',
+  tone = 'plain',
 }: {
   id: string
   children: ReactNode
@@ -56,7 +73,9 @@ export function SectionShell({
         className,
       )}
     >
-      <div className="relative mx-auto w-full max-w-6xl">{children}</div>
+      <div className="relative mx-auto w-full max-w-6xl">
+        {children}
+      </div>
     </section>
   )
 }
