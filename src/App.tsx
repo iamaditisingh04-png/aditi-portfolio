@@ -16,7 +16,6 @@ import { CreekWorld } from './components/scene/CreekWorld'
 import { ScrollJourney } from './components/scene/ScrollJourney'
 import { JourneyProgressContext } from './components/scene/journeyProgress'
 
-import { CursorFrog } from './components/ui/CursorFrog'
 import { FrogHop } from './components/ui/FrogHop'
 
 export default function App() {
@@ -65,8 +64,6 @@ export default function App() {
 
           <Footer />
         </div>
-
-        <CursorFrog />
       </div>
     </JourneyProgressContext.Provider>
   )

@@ -25,12 +25,10 @@ function SocialLink({
   href,
   label,
   children,
-  isDay,
 }: {
   href: string
   label: string
   children: ReactNode
-  isDay: boolean
 }) {
   return (
     <a
@@ -39,10 +37,7 @@ function SocialLink({
       rel="noopener noreferrer"
       aria-label={`${label} profile (opens in a new tab)`}
       className={cn(
-        'group inline-flex items-center gap-2.5 rounded-full border px-5 py-3 transition-colors duration-300',
-        isDay
-          ? 'border-forest/15 bg-[#f3ead7]/70 text-forest hover:border-forest/30 hover:bg-[#f3ead7]'
-          : 'border-white/15 bg-[#26382d]/70 text-[#f3ead7] hover:border-[#d8b8d8]/50 hover:bg-[#26382d]',
+        'group inline-flex items-center gap-2.5 rounded-full border border-white/20 bg-[#26382d]/70 px-5 py-3 text-[#F3DFC0] transition-colors duration-300 hover:border-[#d8b8d8]/50 hover:bg-[#26382d] hover:text-[#FFF8E8]',
         focusRing,
       )}
     >
@@ -61,17 +56,17 @@ export function Contact() {
   const [copied, setCopied] = useState(false)
 
   const colors = {
-    heading: isDay ? 'text-[#26382d]' : 'text-[#f3ead7]',
-    body: isDay ? 'text-[#435744]/80' : 'text-[#c2d0b8]',
-    label: isDay ? 'text-[#a66e50]' : 'text-[#e9b58f]',
-    muted: isDay ? 'text-[#435744]/55' : 'text-[#c2d0b8]/60',
-    line: isDay ? 'bg-forest/15' : 'bg-white/15',
-    icon: isDay ? 'text-[#a66e50]' : 'text-[#e9b58f]',
-    decoration: isDay ? 'text-leaf/20' : 'text-[#c2d0b8]/15',
+    heading: 'text-[#FFF8E8]',
+    body: 'text-[#E8DCC4]',
+    label: 'text-[#E9B58F]',
+    muted: 'text-[#D0C5AC]',
+    line: 'bg-white/20',
+    icon: 'text-[#E9B58F]',
+    decoration: isDay ? 'text-[#E8DCC4]/20' : 'text-[#c2d0b8]/15',
     glow: isDay
       ? 'bg-[radial-gradient(60%_70%_at_50%_30%,rgba(233,181,143,0.25),transparent_65%)]'
       : 'bg-[radial-gradient(60%_70%_at_50%_30%,rgba(216,184,216,0.12),transparent_65%)]',
-    email: isDay ? 'text-[#435744]/65' : 'text-[#c2d0b8]/70',
+    email: 'text-[#E8DCC4]',
   }
 
   useEffect(() => {
@@ -187,7 +182,6 @@ export function Contact() {
             <SocialLink
               href={contact.github.url}
               label={contact.github.label}
-              isDay={isDay}
             >
               <GitHubIcon className="h-4 w-4" />
             </SocialLink>
@@ -195,7 +189,6 @@ export function Contact() {
             <SocialLink
               href={contact.linkedin.url}
               label={contact.linkedin.label}
-              isDay={isDay}
             >
               <LinkedInIcon className="h-4 w-4" />
             </SocialLink>
@@ -204,7 +197,6 @@ export function Contact() {
               <SocialLink
                 href={contact.resume.url}
                 label={contact.resume.label}
-                isDay={isDay}
               >
                 <MailIcon className="h-4 w-4" />
               </SocialLink>
@@ -212,11 +204,7 @@ export function Contact() {
               <span
                 aria-disabled="true"
                 title="The résumé PDF will be added here soon"
-                className={`inline-flex cursor-not-allowed items-center gap-2.5 rounded-full border border-dashed px-5 py-3 ${
-                  isDay
-                    ? 'border-forest/20 text-forest/40'
-                    : 'border-white/20 text-white/40'
-                }`}
+                className="inline-flex cursor-not-allowed items-center gap-2.5 rounded-full border border-dashed border-white/25 px-5 py-3 text-white/60"
               >
                 <MailIcon className="h-4 w-4" />
                 <span className="font-sans text-[0.6rem] font-medium uppercase tracking-[0.24em]">

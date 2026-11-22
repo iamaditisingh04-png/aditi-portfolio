@@ -23,13 +23,13 @@ export function About() {
     paper: isDay
       ? 'border-[#b99a6c]/60 bg-[#f5e8ce]/95'
       : 'border-[#a9b895]/25 bg-[#35483b]/95',
-    heading: isDay ? 'text-[#31523a]' : 'text-[#f0e6cf]',
-    body: isDay ? 'text-[#5d7054]' : 'text-[#d2dbc9]',
-    muted: isDay ? 'text-[#8a8065]' : 'text-[#aab9a2]',
-    divider: isDay ? 'border-[#b99a6c]/40' : 'border-white/15',
+    heading: isDay ? 'text-[#17251E]' : 'text-[#FFF8E8]',
+body: isDay ? 'text-[#26382D]' : 'text-[#E8DCC4]',
+    muted: isDay ? 'text-[#71664F]' : 'text-[#D0C5AC]',
+    divider: isDay ? 'border-[#b99a6c]/40' : 'border-[#E8DCC4]/25',
     tag: isDay
-      ? 'bg-[#dce2c9] text-[#4d6747]'
-      : 'bg-[#526a52]/60 text-[#e1e7d7]',
+      ? 'bg-[#dce2c9] text-[#3F5B3D]'
+      : 'bg-[#526a52]/60 text-[#FFF8E8]',
   }
 
   return (
@@ -204,13 +204,13 @@ export function About() {
 
             <a
               href="#skills"
-              className="mt-6 inline-flex items-center gap-3 rounded-full border border-sun/50 px-6 py-3 font-sans text-[0.6rem] uppercase tracking-[0.25em] text-sun transition-all duration-300 hover:bg-sun/10"
+              className="mt-6 inline-flex items-center gap-3 rounded-full border border-sun/50 px-6 py-3 font-sans text-[0.6rem] uppercase tracking-[0.25em] text-[#E9B58F] transition-all duration-300 hover:bg-sun/10"
             >
               Enter the little library
               <span aria-hidden="true">→</span>
             </a>
 
-            <span className="mt-6 font-sans text-[0.55rem] uppercase tracking-[0.4em] text-sun">
+            <span className="mt-6 font-sans text-[0.55rem] uppercase tracking-[0.4em] text-[#E9B58F]">
               Welcome Room · Chapter I
             </span>
           </div>

@@ -163,14 +163,14 @@ function ActivityCalendar({
   }, [calendar])
 
   return (
-   <article className="rounded-2xl border border-white/10 bg-[#26382d] p-4 shadow-[0_16px_45px_rgba(0,0,0,0.25)] transition duration-300 hover:border-[#829b75]/50 sm:p-6">
+    <article className="rounded-2xl border border-white/10 bg-[#26382d] p-4 shadow-[0_16px_45px_rgba(0,0,0,0.25)] transition duration-300 hover:border-[#829b75]/50 sm:p-6">
       <div className="flex flex-wrap items-center justify-between gap-3">
         <div>
-          <h3 className="font-display text-2xl text-[#f1eadc]">
+          <h3 className="font-display text-2xl text-[#FFF8E8]">
             {config.title}
           </h3>
 
-          <p className="mt-1 text-sm text-[#929c94]">
+          <p className="mt-1 text-sm text-[#D0C5AC]">
             @{config.username}
           </p>
         </div>
@@ -179,7 +179,7 @@ function ActivityCalendar({
           href={config.url}
           target="_blank"
           rel="noreferrer"
-          className="rounded-full border border-white/15 px-4 py-2 text-xs text-[#e4d9c6] transition hover:border-white/35 hover:bg-white/10"
+          className="rounded-full border border-white/20 px-4 py-2 text-xs text-[#E9B58F] transition hover:border-white/35 hover:bg-white/10 hover:text-[#FFF8E8]"
         >
           Visit profile ↗
         </a>
@@ -187,16 +187,16 @@ function ActivityCalendar({
 
       <div className="mt-6">
         {state.loading ? (
-          <p className="py-8 text-sm text-[#929c94]">
+          <p className="py-8 text-sm text-[#D0C5AC]">
             Gathering little coding footprints...
           </p>
         ) : state.error ? (
           <div className="rounded-xl border border-white/10 bg-white/[0.04] p-5">
-            <p className="font-display text-lg text-[#f1eadc]">
+            <p className="font-display text-lg text-[#FFF8E8]">
               The activity calendar is taking a nap.
             </p>
 
-            <p className="mt-1 text-sm text-[#929c94]">
+            <p className="mt-1 text-sm text-[#D0C5AC]">
               {state.error}
             </p>
           </div>
@@ -207,7 +207,7 @@ function ActivityCalendar({
                 {monthLabels.map((month) => (
                   <span
                     key={`${month.label}-${month.column}`}
-                    className="absolute text-[10px] text-[#a4aea6] sm:text-xs"
+                    className="absolute text-[10px] text-[#D0C5AC] sm:text-xs"
                     style={{
                       left: `${(month.column / calendar.length) * 100}%`,
                     }}
@@ -218,7 +218,7 @@ function ActivityCalendar({
               </div>
 
               <div className="flex gap-2">
-                <div className="flex w-6 shrink-0 flex-col justify-between py-0.5 text-[9px] text-[#929c94] sm:w-7 sm:text-[10px]">
+                <div className="flex w-6 shrink-0 flex-col justify-between py-0.5 text-[9px] text-[#D0C5AC] sm:w-7 sm:text-[10px]">
                   <span>Mon</span>
                   <span>Wed</span>
                   <span>Fri</span>
@@ -265,7 +265,7 @@ function ActivityCalendar({
               </div>
             </div>
 
-            <div className="mt-5 flex flex-wrap items-center justify-between gap-3 text-[10px] text-[#929c94] sm:text-xs">
+            <div className="mt-5 flex flex-wrap items-center justify-between gap-3 text-[10px] text-[#D0C5AC] sm:text-xs">
               <span>
                 {state.total.toLocaleString()} recorded activities · Last 6 months
               </span>
@@ -438,17 +438,17 @@ export function CodingActivity() {
   }, [])
 
   return (
-   <section className="relative mx-auto w-full max-w-4xl bg-[#17251e] px-5 py-20 sm:px-8">
+    <section className="relative mx-auto w-full max-w-4xl bg-[#17251e] px-5 py-20 sm:px-8">
       <div className="mb-12 text-center">
-        <p className="font-sans text-xs uppercase tracking-[0.3em] text-[#8caa94]">
+        <p className="font-sans text-xs uppercase tracking-[0.3em] text-[#E9B58F]">
           A little progress, one day at a time
         </p>
 
-        <h2 className="mt-3 font-display text-3xl text-[#f1eadc] sm:text-4xl">
+        <h2 className="mt-3 font-display text-3xl text-[#FFF8E8] sm:text-4xl">
           My Coding Footprints
         </h2>
 
-        <p className="mt-3 font-display italic text-[#a5b5a7]">
+        <p className="mt-3 font-display italic text-[#E8DCC4]">
           Me vs. the problems. The problems are putting up a fight.
         </p>
       </div>

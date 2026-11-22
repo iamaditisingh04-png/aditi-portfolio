@@ -16,17 +16,25 @@ const bookColors = [
 
 export function Skills() {
   const { theme } = useWorldTheme()
-  const isDay = theme === 'day'
+
+  // Cottage / scenery background: ALWAYS LIGHT
+  const outer = {
+    heading: 'text-[#FFF8E8]',
+    body: 'text-[#E8DCC4]',
+    muted: 'text-[#F3DFC0]',
+  }
+
+  // Beige / parchment backgrounds: ALWAYS DARK
+  const paper = {
+    heading: 'text-[#31523A]',
+    body: 'text-[#4F6249]',
+    muted: 'text-[#71664F]',
+  }
 
   const colors = {
-    heading: isDay ? 'text-[#294b35]' : 'text-[#f0eadb]',
-    body: isDay ? 'text-[#526b54]' : 'text-[#d0d9d0]',
-    muted: isDay ? 'text-[#71816b]' : 'text-[#b0bea9]',
-    panel: isDay
-      ? 'border-[#e4d0ad]/80 bg-[#fff7e8]/85'
-      : 'border-white/15 bg-[#202c35]/85',
-    shelf: isDay ? 'bg-[#765139]' : 'bg-[#3c3540]',
-    shelfEdge: isDay ? 'bg-[#a77a50]' : 'bg-[#66536a]',
+    panel: 'border-[#e4d0ad]/80 bg-[#fff7e8]/95',
+    shelf: theme === 'day' ? 'bg-[#765139]' : 'bg-[#3c3540]',
+    shelfEdge: theme === 'day' ? 'bg-[#a77a50]' : 'bg-[#66536a]',
   }
 
   return (
@@ -41,7 +49,7 @@ export function Skills() {
 
       {/* Library introduction */}
       <Reveal className="mx-auto mb-16 max-w-3xl text-center">
-        <span className={`font-sans text-[0.58rem] uppercase tracking-[0.4em] ${colors.muted}`}>
+        <span className={`font-sans text-[0.58rem] uppercase tracking-[0.4em] ${outer.muted}`}>
           Chapter II · The Library
         </span>
 
@@ -69,10 +77,10 @@ export function Skills() {
           </div>
 
           <div>
-            <p className={`font-display text-xl ${colors.heading}`}>
+            <p className={`font-display text-xl ${paper.heading}`}>
               No expert claims here.
             </p>
-            <p className={`mt-1 text-sm leading-relaxed ${colors.body}`}>
+            <p className={`mt-1 text-sm leading-relaxed ${paper.body}`}>
               Just curiosity, practice, experiments and the occasional existential crisis over semicolons.
             </p>
           </div>
@@ -85,14 +93,14 @@ export function Skills() {
           {learningPaths.map((path, index) => (
             <Reveal key={path.title} delay={index * 80}>
               <article className="group relative h-full">
-                <div className="relative flex h-full min-h-[285px] flex-col overflow-hidden rounded-t-xl rounded-b-md border border-[#8d704e]/30 bg-[#fff7e8]/90 shadow-[0_12px_30px_rgba(49,57,35,0.13)] backdrop-blur-md transition-all duration-500 group-hover:-translate-y-2 group-hover:shadow-[0_20px_40px_rgba(49,57,35,0.2)]">
+                <div className="relative flex h-full min-h-[285px] flex-col overflow-hidden rounded-t-xl rounded-b-md border border-[#8d704e]/30 bg-[#fff7e8]/95 shadow-[0_12px_30px_rgba(49,57,35,0.13)] backdrop-blur-md transition-all duration-500 group-hover:-translate-y-2 group-hover:shadow-[0_20px_40px_rgba(49,57,35,0.2)]">
 
                   {/* Book spine */}
                   <div className={`absolute inset-y-0 left-0 w-3 bg-gradient-to-r ${bookColors[index % bookColors.length]}`} />
 
                   <div className="flex flex-1 flex-col p-7 pl-9">
                     <div className="flex items-center justify-between">
-                      <span className="font-sans text-[0.58rem] uppercase tracking-[0.25em] text-[#8c795c]">
+                      <span className="font-sans text-[0.58rem] uppercase tracking-[0.25em] text-[#71664F]">
                         Volume {String(index + 1).padStart(2, '0')}
                       </span>
 
@@ -112,12 +120,12 @@ export function Skills() {
                       {path.title}
                     </h3>
 
-                    <p className="mt-3 flex-1 text-sm leading-[1.8] text-[#66745b]">
+                    <p className="mt-3 flex-1 text-sm leading-[1.8] text-[#4F6249]">
                       {path.blurb}
                     </p>
 
                     <div className="mt-6 flex items-center justify-between border-t border-[#d9c7a5]/70 pt-4">
-                      <span className="font-sans text-[0.53rem] uppercase tracking-[0.22em] text-[#8a8066]">
+                      <span className="font-sans text-[0.53rem] uppercase tracking-[0.22em] text-[#71664F]">
                         Still learning
                       </span>
 
@@ -139,15 +147,15 @@ export function Skills() {
       {/* Personal note */}
       <Reveal delay={180}>
         <div className={`mx-auto mt-16 max-w-2xl rounded-xl border p-7 text-center shadow-lg sm:p-9 ${colors.panel}`}>
-          <span className={`font-sans text-[0.55rem] uppercase tracking-[0.35em] ${colors.muted}`}>
+          <span className={`font-sans text-[0.55rem] uppercase tracking-[0.35em] ${paper.muted}`}>
             A note I've left for myself
           </span>
 
-          <p className={`mt-5 font-display text-xl italic leading-relaxed sm:text-2xl ${colors.heading}`}>
+          <p className={`mt-5 font-display text-xl italic leading-relaxed sm:text-2xl ${paper.heading}`}>
             "You don't have to know everything. Just stay curious enough to keep learning."
           </p>
 
-          <p className={`mt-4 font-display text-sm italic ${colors.muted}`}>
+          <p className={`mt-4 font-display text-sm italic ${paper.muted}`}>
             — A reminder for the next debugging disaster
           </p>
         </div>
@@ -158,11 +166,11 @@ export function Skills() {
         <div className="mt-20 flex flex-col items-center text-center">
           <FlowerMark className="h-7 w-7 text-sun" />
 
-          <p className={`mt-5 max-w-xl font-display text-xl italic leading-relaxed ${colors.body}`}>
+          <p className={`mt-5 max-w-xl font-display text-xl italic leading-relaxed ${outer.body}`}>
             "One day I'll look back at these little beginnings and smile."
           </p>
 
-          <span className={`mt-5 font-sans text-[0.55rem] uppercase tracking-[0.38em] ${colors.muted}`}>
+          <span className={`mt-5 font-sans text-[0.55rem] uppercase tracking-[0.38em] ${outer.muted}`}>
             Chapter II · Still growing
           </span>
         </div>

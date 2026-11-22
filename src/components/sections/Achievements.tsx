@@ -1,25 +1,18 @@
 
 import { timeline } from '../../data/portfolio'
-import { useWorldTheme } from '../../ThemeContext'
 import { FlowerMark } from '../ui/Ornaments'
 import { Reveal } from '../ui/Reveal'
 import { SectionHeading, SectionShell } from '../ui/SectionHeading'
 
 export function Achievements() {
-  const { theme } = useWorldTheme()
-  const isDay = theme === 'day'
-
   const colors = {
-    line: isDay
-      ? 'from-[#9aaf78]/70 via-[#c5a4c9]/50 to-transparent'
-      : 'from-[#9aaf78]/70 via-[#c5a4c9]/40 to-transparent',
-    marker: isDay
-      ? 'border-[#c69b65] bg-[#f3ead7] shadow-[0_0_0_6px_rgba(243,234,215,0.75)]'
-      : 'border-[#d8b8d8]/70 bg-[#26382d] shadow-[0_0_0_6px_rgba(23,37,30,0.8)]',
-    heading: isDay ? 'text-[#26382d]' : 'text-[#f3ead7]',
-    body: isDay ? 'text-[#435744]/75' : 'text-[#c2d0b8]',
-    label: isDay ? 'text-[#a66e50]' : 'text-[#e9b58f]',
-    closing: isDay ? 'text-[#435744]/65' : 'text-[#c2b8d5]',
+    line: 'from-[#9aaf78]/70 via-[#c5a4c9]/50 to-transparent',
+    marker:
+      'border-[#d8b8d8]/70 bg-[#26382d] shadow-[0_0_0_6px_rgba(23,37,30,0.8)]',
+    heading: 'text-[#FFF8E8]',
+    body: 'text-[#E8DCC4]',
+    label: 'text-[#E9B58F]',
+    closing: 'text-[#D8B8D8]',
   }
 
   return (
